@@ -11,3 +11,12 @@ db_path = os.path.join(BASE_DIR, "reservations.db")
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
+
+
+def get_cost_matrix():
+    return [[100, 75, 50, 100] for _ in range(12)]
+
+COST_MATRIX = get_cost_matrix()
+
+def seat_price(row, col):
+    return COST_MATRIX[row - 1][col - 1]
