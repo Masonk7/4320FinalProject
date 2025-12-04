@@ -20,3 +20,51 @@ COST_MATRIX = get_cost_matrix()
 
 def seat_price(row, col):
     return COST_MATRIX[row - 1][col - 1]
+
+
+class Reservation(db.Model):
+    __tablename__ = "reservations"
+    id = db.Column(db.Integer, primary_key=True)
+    passengerName = db.Column(db.Text, nullable=False)
+    seatRow = db.Column(db.Integer, nullable=False)
+    seatColumn = db.Column(db.Integer, nullable=False)
+    eTicketNumber = db.Column(db.Text, nullable=False)
+    created = db.Column(
+        db.DateTime,
+        nullable=False,
+        server_default=func.current_timestamp()
+    )
+
+class Admin(db.Model):
+    __tablename__ = "admins"
+    username = db.Column(db.Text, primary_key=True)
+    password = db.Column(db.Text, nullable=False)
+
+def build_seating_chart():
+    chart = []
+    reservations = Reservation.query.all()
+    taken = {(r.seatRow, r.seatColumn): r for r in reservations}
+
+    for row in range(1, 13):      
+        row_list = []
+        for col in range(1, 5):   
+            r = taken.get((row, col))
+            row_list.append({
+                "row": row,
+                "col": col,
+                "reserved": r is not None,
+                "name": r.passengerName if r else "",
+                "price": seat_price(row, col)
+            })
+        chart.append(row_list)
+    return chart
+
+def calculate_total_sales():
+    total = 0
+    for r in Reservation.query.all():
+        total += seat_price(r.seatRow, r.seatColumn)
+    return total
+
+def is_admin_logged_in():
+    return "admin_username" in session
+
