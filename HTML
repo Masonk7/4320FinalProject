@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Main Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .menu-container {
+            display: inline-block;
+            padding: 20px 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+        .menu-button {
+            display: block;
+            width: 250px;
+            margin: 15px auto;
+            padding: 12px;
+            font-size: 18px;
+            background: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        .menu-button:hover {
+            background: #005c9e;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bus Reservation System</h1>
+
+    <div class="menu-container">
+
+        <a class="menu-button" href="{{ url_for('reserve_seat') }}">
+            Reserve a Seat
+        </a>
+
+        <a class="menu-button" href="{{ url_for('admin_login') }}">
+            Admin Login
+        </a>
+
+    </div>
+
+</body>
+</html>
