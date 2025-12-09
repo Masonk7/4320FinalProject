@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hackathon Bus Reservation</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    nav a { margin-right: 10px; }
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #444; padding: 4px 6px; }
+    .reserved { background: #ffcccc; }
+    .available { background: #ccffcc; }
+    .flash { padding: 6px; margin: 4px 0; border-radius: 3px; }
+    .flash.error { background: #ffdddd; }
+    .flash.success { background: #ddffdd; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="{{ url_for('main_menu') }}">Main Menu</a>
+  {% if session.admin_username %}
+    <span>Admin: {{ session.admin_username }}</span>
+    <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+    <a href="{{ url_for('admin_logout') }}">Logout</a>
+  {% endif %}
+</nav>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, msg in messages %}
+      <div class="flash {{ category }}">{{ msg }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<hr>
+
+{% block content %}{% endblock %}
+</body>
+</html>
