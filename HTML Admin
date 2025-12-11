@@ -1,1 +1,140 @@
 <!--admin page file-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 40px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .btn-link {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            background: #0077cc;
+            color: white;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+
+        .btn-link:hover {
+            background: #005c9e;
+        }
+
+        .flash-messages {
+            margin-bottom: 15px;
+        }
+
+        .flash-messages ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .flash-messages li {
+            background: #ffe4b3;
+            border: 1px solid #ffb84d;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .summary-box {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 0 10px #ccc;
+            margin-bottom: 25px;
+        }
+
+        .summary-box h2 {
+            margin-top: 0;
+        }
+
+        .layout {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 0 10px #ccc;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 6px 8px;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #f0f0f0;
+        }
+
+        .available {
+            color: #008000;
+            font-weight: bold;
+        }
+
+        .reserved {
+            color: #cc0000;
+            font-weight: bold;
+        }
+
+        .delete-btn {
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            border: none;
+            background: #cc0000;
+            color: white;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #990000;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+</html>
